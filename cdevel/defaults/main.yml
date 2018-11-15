@@ -1,0 +1,23 @@
+---
+
+fedora_cdevel_packages:
+  - gcc
+  - make
+  - git-core
+  - git-gui
+  - gitk
+  - libtool
+  - autoconf
+  - automake
+  - gdb
+  - rpm-build
+  - vim-enhanced
+  - vim-X11
+  - ctags
+  - man-pages
+  - rpm-build
+  - dnf-plugins-core
+  - screen
+  - xauth
+  - bash-completion
+

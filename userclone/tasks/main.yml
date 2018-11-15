@@ -1,0 +1,40 @@
+---
+
+# Clone local user to remote system (VM). That is, 
+# 1) Create the user named as the one running ansible-playbook
+# 2) Append ssh public key to ~/.ssh/authorized_keys on the remote side
+# 3) Optionally enable passwordless sudo for the newly added user
+
+- name: create user account
+  user:
+    name: "{{ username }}"
+    uid: "{{ uid }}"
+    state: present
+    password_lock: yes
+
+- name: install sudo package
+  package: name=sudo state=present
+
+- name: install python2 selinux bindings (required for ansible itself)
+  package: name=python2-libselinux state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: create /etc/sudoers.d directory
+  file:
+    dest: /etc/sudoers.d
+    state: directory
+
+
+- name: enable passwordless sudo for user
+  copy:
+    content: "{{ username }} ALL=(ALL) NOPASSWD:ALL"
+    dest: "/etc/sudoers.d/{{ username }}"
+    owner: root
+    group: root
+    mode: 0440
+
+- name: allow authentication with local id_rsa.pub 
+  authorized_key:
+    user: "{{ username }}"
+    key: "{{ ssh_key }}"
+    state: present

@@ -1,0 +1,10 @@
+---
+
+- set_fact:
+    samba_devel_packages: "{{ fedora_samba_devel_packages }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: install packages for Samba development
+  package: name={{ item }} state=present
+  become: true
+  with_items: "{{ samba_devel_packages }}"

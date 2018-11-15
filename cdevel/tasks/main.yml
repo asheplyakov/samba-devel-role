@@ -1,0 +1,11 @@
+---
+
+- set_fact:
+    cdevel_packages: "{{ fedora_cdevel_packages }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: install C development packages on Fedora/CentOS
+  package: name={{ item }} state=present
+  with_items: "{{ cdevel_packages }}"
+  become: true
+  tags: packages

@@ -1,0 +1,2 @@
+[samba-devel]
+fedora1 ansible_host=192.168.122.2 ansible_user=root

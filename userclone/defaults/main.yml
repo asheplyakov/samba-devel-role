@@ -1,0 +1,5 @@
+---
+
+username: "{{ lookup('env', 'USER') }}"
+uid: "{{ lookup('pipe', 'id -u') }}"
+ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

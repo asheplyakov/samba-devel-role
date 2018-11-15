@@ -1,0 +1,16 @@
+---
+
+fedora_samba_devel_packages:
+  - gnutls-devel
+  - gpgme-devel
+  - jansson-devel
+  - libacl-devel
+  - libarchive-devel
+  - lmdb-devel
+  - openldap-devel
+  - pam-devel
+  - perl-Archive-Tar
+  - perl-Test-Simple
+  - python2-devel
+  - python2-gpg
+  - rpcgen
