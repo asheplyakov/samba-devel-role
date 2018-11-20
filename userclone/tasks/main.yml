@@ -38,3 +38,19 @@
     user: "{{ username }}"
     key: "{{ ssh_key }}"
     state: present
+
+- name: install git
+  package: name=git-core state=present
+
+- name: set user name for git
+  command: >
+    git config --global user.name "{{ realname }}"
+  become: true
+  become_user: "{{ username }}"
+
+- name: set user email for git
+  command: >
+    git config --global user.email "{{ email }}"
+  when: email is defined
+  become: true
+  become_user: "{{ username }}"
