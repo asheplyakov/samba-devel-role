@@ -7,10 +7,14 @@ fedora_samba_devel_packages:
   - libacl-devel
   - libarchive-devel
   - lmdb-devel
+  - m2crypto
   - openldap-devel
   - pam-devel
   - perl-Archive-Tar
   - perl-Test-Simple
+  - perl-Time-HiRes
   - python2-devel
   - python2-gpg
+  - python2-markdown
+  - python2-m2ext
   - rpcgen
